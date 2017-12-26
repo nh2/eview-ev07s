@@ -1,0 +1,36 @@
+name:                eview-ev07s
+version:             0.1.0.0
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+synopsis:            Parser for the eview-ev07s GPS tracker's protocol
+description:         Parser for the eview-ev07s GPS tracker's protocol.
+
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Network.EV07S
+  build-depends:       base < 5
+                     , megaparsec
+                     , text
+                     , time
+  default-language:    Haskell2010
+  ghc-options:         -Wall
+
+
+test-suite eview-ev07s-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Main.hs
+  build-depends:       base
+                     , eview-ev07s
+                     , hspec
+                     , megaparsec
+                     , text
+  ghc-options:         -Wall -rtsopts -threaded "-with-rtsopts=-N -qg"
+  default-language:    Haskell2010
+
+
+source-repository head
+  type:     git
+  location: https://github.com/nh2/eview-ev07s
