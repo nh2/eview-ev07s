@@ -30,7 +30,7 @@ data AlarmMessage = AlarmMessage
   , alarmMessageLocation :: (Double, Double)
   , alarmMessageSpeed :: Int
   , alarmMessage_1 :: Int
-  , alarmMessage_2 :: Int
+  , alarmMessage_2 :: Int -- ^ hex without 0x prefix
   , alarmMessage_3 :: Double
   , alarmMessageBattery :: Int
   , alarmMessage_4 :: Int
@@ -116,7 +116,7 @@ messageParser = do
       skipComma
       alarmMessage_1 :: Int <- L.decimal
       skipComma
-      alarmMessage_2 :: Int <- L.decimal
+      alarmMessage_2 :: Int <- L.hexadecimal
       skipComma
       alarmMessage_3 :: Double <- L.float
       skipComma
